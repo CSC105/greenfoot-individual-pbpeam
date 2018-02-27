@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GameOver extends World
 {
-
+    GreenfootSound endTheme;
     /**
      * Constructor for objects of class GameOver.
      * 
@@ -20,20 +20,24 @@ public class GameOver extends World
         ShowScore Score = new ShowScore();
         addObject(Score, getWidth()/2 , 500);
         
-        Greenfoot.playSound("GameOver.mp3");
+        endTheme = new GreenfootSound("GameOver.mp3");
         //World world = getWorld();
         //world.showText("Your Score is " + Score.score, world.getWidth()/2, 500);
     }
     
     public void act(){
         Restart();
+        endTheme.play();
+    }
+    public void stop(){
+        endTheme.stop();
     }
     
     public void Restart(){
         if(Greenfoot.isKeyDown("r")){
+              endTheme.stop();
               Greenfoot.setWorld(new MyWorld());
               Score.score = 0;
-
         }
     }
 }
