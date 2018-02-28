@@ -26,17 +26,20 @@ public class GameOver extends World
     }
     
     public void act(){
-        Restart();
+        //Restart();
         endTheme.play();
+        Restart();
+        //stop();
     }
+    
     public void stop(){
         endTheme.stop();
     }
     
     public void Restart(){
         if(Greenfoot.isKeyDown("r")){
-              endTheme.stop();
               Greenfoot.setWorld(new MyWorld());
+              endTheme.stop();
               Score.score = 0;
         }
     }

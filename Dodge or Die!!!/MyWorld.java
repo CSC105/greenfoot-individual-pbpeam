@@ -2,6 +2,7 @@ import greenfoot.*;
 
 public class MyWorld extends World
 {
+    public static GreenfootSound mainTheme;
     public MyWorld()
     {    
         super(748, 826, 1);
@@ -10,11 +11,14 @@ public class MyWorld extends World
         addObject(Flamingo, getWidth()/2,730);
         
         Score();
+        
+        mainTheme = new GreenfootSound("MainTheme.mp3");
     }    
     
     public void act(){
        falling();
        CoinFall();
+       mainTheme.play();
     }
     
     public void falling(){

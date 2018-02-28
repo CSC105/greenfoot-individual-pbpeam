@@ -6,6 +6,7 @@ public class Flamingo extends Actor
    private int direction;
    GreenfootImage[] right = new GreenfootImage[36];
    GreenfootImage[] left = new GreenfootImage[36];
+   
     public Flamingo(){
         GreenfootImage Flamingo = getImage();
         for (int i=0; i<36; i++){
@@ -35,13 +36,13 @@ public class Flamingo extends Actor
             setLocation(getX()-speed,getY());
             image +=1;
             direction = -1;
-        }
+      }
         
-        if(Greenfoot.isKeyDown("right")){
+      if(Greenfoot.isKeyDown("right")){
             setLocation(getX()+speed,getY());
             image +=1;
             direction = 1;
-        }  
+      }  
     }
     
     public void Image(){       
@@ -70,7 +71,11 @@ public class Flamingo extends Actor
             //world.addObject(new Restart(), world.getWidth()/2, 650);
             Greenfoot.setWorld(new GameOver());
             
-            //Score.score = 0;           
+            //Score.score = 0;  
+            
+            
+            MyWorld.mainTheme.stop();
+            
         }
     }
     
@@ -78,17 +83,21 @@ public class Flamingo extends Actor
         if(isTouching(Coin.class) == true){
             removeTouching(Coin.class);
             Score.score+=10;
+            new GreenfootSound("getCoin.mp3").play();
         }
         
         if(isTouching(SilverCoin.class) == true){
             removeTouching(SilverCoin.class);
             Score.score+=5;
+            new GreenfootSound("getCoin.mp3").play();
         }
+        //getCoin.play();
+        
     }
     
     public void Restart(){
         if(Greenfoot.isKeyDown("r")){
                 Greenfoot.setWorld(new MyWorld());
-            }
+        }
     }
 }
