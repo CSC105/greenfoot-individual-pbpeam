@@ -73,7 +73,7 @@ public class Flamingo extends Actor
             
             //Score.score = 0;  
             
-            
+            new GreenfootSound("Slash.wav").play();
             MyWorld.mainTheme.stop();
             
         }
